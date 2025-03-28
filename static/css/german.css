@@ -1,0 +1,300 @@
+/* Base Styles */
+:root {
+    --primary-color: #4a90e2; /* Soft Blue */
+    --secondary-color: rgb(0, 82, 224); /* Dark Blue */
+    --accent-color: rgb(235, 184, 0); /* Warm Gold */
+    --dark-bg: #1a202c; /* Rich Dark */
+    --card-bg: #2d3748; /* Slightly Lighter Dark */
+    --light-text: #e2e8f0; /* Soft Light Gray */
+    --shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    --header-blue: #1e90ff; /* Dodger Blue for header */
+    --header-dark: #0052e0; /* Darker Blue */
+    --grammar-start: #48bb78; /* Green Start for Grammar */
+    --grammar-end: #2f855a; /* Green End for Grammar */
+    --components-start: #ed8936; /* Orange Start for Components */
+    --components-end: #c05621; /* Orange End for Components */
+    --exam-start: #347ff7; /* Blue Start for Exam */
+    --exam-end: #3f86fa; /* Blue End for Exam */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, var(--dark-bg) 0%, var(--card-bg) 100%);
+    color: var(--light-text);
+    line-height: 1.6;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Subtle Background Pattern */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(74, 144, 226, 0.05) 25%, transparent 25%, transparent 75%, rgba(74, 144, 226, 0.05) 75%);
+    background-size: 60px 60px;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.header-container {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+header {
+    background: linear-gradient(90deg, var(--header-dark), var(--header-blue));
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    border-radius: 0px;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(30deg);
+    transition: all 0.5s ease;
+}
+
+header:hover::after {
+    left: 100%;
+}
+
+h1 {
+    font-size: 2.2rem;
+    font-weight: bolder;
+    color: white;
+    margin-bottom: 0.3rem;
+}
+
+h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--light-text);
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    color: var(--light-text);
+}
+
+/* Card Styles */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem; /* Reduced gap between cards */
+    justify-content: center;
+    align-items: stretch; /* Ensure cards are of equal height */
+}
+
+.main-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: var(--light-text);
+    width: 320px; /* Fixed width for equal size */
+    min-height: 300px; /* Changed to min-height to allow growth */
+    border: 1px solid rgba(74, 144, 226, 0.2);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensures footer aligns at bottom */
+}
+
+.main-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    border-color: var(--primary-color);
+}
+
+.grammar-card .card-header { background: linear-gradient(90deg, var(--grammar-start), var(--grammar-end)); }
+.components-card .card-header { background: linear-gradient(90deg, var(--components-start), var(--components-end)); }
+.exam-card .card-header { background: linear-gradient(90deg, var(--exam-start), var(--exam-end)); }
+
+.card-header {
+    padding: 1rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: center;
+    color: var(--light-text);
+    position: relative;
+    border-bottom: 1px solid rgba(74, 144, 226, 0.2);
+}
+
+.card-body {
+    padding: 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.card-icon {
+    margin-bottom: 1rem;
+}
+
+.card-icon svg {
+    width: 48px;
+    height: 48px;
+    transition: transform 0.3s ease;
+}
+
+.main-card:hover .card-icon svg {
+    transform: scale(1.1);
+}
+
+.card-text {
+    font-size: 1rem;
+    opacity: 0.9;
+    color: var(--light-text);
+    font-weight: 400;
+    padding: 0 1rem;
+    word-wrap: break-word; /* Ensure text wraps properly */
+}
+
+.card-footer {
+    background: rgba(74, 144, 226, 0.15);
+    padding: 0.8rem;
+    text-align: center;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 0.95rem;
+    border-top: 1px solid rgba(74, 144, 226, 0.2);
+    transition: all 0.3s ease;
+    width: 100%; /* Ensure full width */
+    text-align: center;
+    flex-shrink: 0; /* Prevent footer from shrinking */
+}
+
+.card-footer:hover {
+    background: rgba(74, 144, 226, 0.25);
+    color: var(--accent-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5rem;
+    }
+    
+    .header-container {
+        max-width: 450px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .main-card {
+        width: 300px;
+        min-height: 280px; /* Adjusted min-height */
+    }
+
+    .card-header {
+        padding: 0.8rem;
+        font-size: 1.2rem;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    .card-text {
+        font-size: 0.95rem;
+    }
+
+    .card-footer {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .header-container {
+        max-width: 100%;
+    }
+    
+    .main-card {
+        width: 100%;
+        min-height: 260px; /* Adjusted min-height */
+    }
+    
+    h1 {
+        font-size: 1.6rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .card-header {
+        padding: 0.7rem;
+        font-size: 1.1rem;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    .card-text {
+        font-size: 0.9rem;
+    }
+
+    .card-footer {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+    }
+
+    .card-icon svg {
+        width: 40px;
+        height: 40px;
+    }
+}
